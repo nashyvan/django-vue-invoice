@@ -3,6 +3,8 @@
   <div class="columns is-multiline">
     <div class="column is-12">
       <h1 class="title">{{ client.name }}</h1>
+
+      <router-link class="button is-light mt-4" :to="{ name: 'EditClient'}">Edit</router-link>
     </div>
 
     <div class="column is-12">

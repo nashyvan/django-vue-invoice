@@ -5,6 +5,8 @@ from rest_framework import viewsets
 from .models import Client
 from .serializers import ClientSerializer
 
+from django.core.exceptions import PermissionDenied
+
 
 class ClientViewSet(viewsets.ModelViewSet):
     serializer_class = ClientSerializer
@@ -13,3 +15,13 @@ class ClientViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         return self.queryset.filter(created_by=self.request.user)
 
+    def perform_create(self, serializer):
+        serializer.save(created_by=self.request.user)
+
+    def perform_update(self, serializer):
+        obj = self.get_object()
+
+        if self.request.user != obj.created_by:
+            raise PermissionDenied('Wrong object owner!')
+
+        serializer.save()
