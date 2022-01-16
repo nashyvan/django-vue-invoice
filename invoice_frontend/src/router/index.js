@@ -9,6 +9,8 @@ import Client from '../views/dashboard/Client'
 import AddClient from '../views/dashboard/AddClient'
 import EditClient from '../views/dashboard/EditClient'
 import EditTeam from '../views/dashboard/EditTeam'
+import Invoices from '../views/dashboard/Invoices'
+import Invoice from '../views/dashboard/Invoice'
 
 import store from '../store'
 
@@ -40,6 +42,22 @@ const routes = [
     path: '/dashboard',
     name: 'Dashboard',
     component: Dashboard,
+    meta: {
+      requireLogin: true
+    }
+  },
+  {
+    path: '/dashboard/invoices',
+    name: 'Invoices',
+    component: Invoices,
+    meta: {
+      requireLogin: true
+    }
+  },
+  {
+    path: '/dashboard/invoices/:id',
+    name: 'Invoice',
+    component: Invoice,
     meta: {
       requireLogin: true
     }

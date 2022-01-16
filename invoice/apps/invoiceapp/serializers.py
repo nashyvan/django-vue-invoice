@@ -4,10 +4,13 @@ from .models import Invoice, Item
 
 
 class InvoiceSerializer(serializers.ModelSerializer):
+    client = serializers.StringRelatedField()
+
     class Meta:
         model = Invoice
         read_only_fields = (
             'team',
+            'invoice_number',
             'created_at',
             'created_by',
             'modified_at',
@@ -15,6 +18,7 @@ class InvoiceSerializer(serializers.ModelSerializer):
         ),
         fields = (
             'id',
+            'invoice_number',
             'client',
             'client_name',
             'client_email',
@@ -30,8 +34,26 @@ class InvoiceSerializer(serializers.ModelSerializer):
             'invoice_type',
             'due_days',
             'is_sent',
+            'is_paid',
             'gross_amount',
             'vat_amount',
             'net_amount',
             'discount_amount',
+        )
+
+
+class ItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Item
+        read_only_fields = (
+            'invoice',
+        ),
+        fields = (
+            'id',
+            'title',
+            'quantity',
+            'unit_price',
+            'net_amount',
+            'vat_rate',
+            'discount',
         )
