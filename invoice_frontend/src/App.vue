@@ -13,6 +13,7 @@
 
             <div class="navbar-item">
               <div class="buttons">
+                <router-link class="button is-success" to="/dashboard/invoices/add">Add invoice</router-link>
                 <router-link class="button is-light" to="/dashboard/my-account">My Account</router-link>
               </div>
             </div>

@@ -11,6 +11,7 @@ import EditClient from '../views/dashboard/EditClient'
 import EditTeam from '../views/dashboard/EditTeam'
 import Invoices from '../views/dashboard/Invoices'
 import Invoice from '../views/dashboard/Invoice'
+import AddInvoice from '../views/dashboard/AddInvoice'
 
 import store from '../store'
 
@@ -50,6 +51,14 @@ const routes = [
     path: '/dashboard/invoices',
     name: 'Invoices',
     component: Invoices,
+    meta: {
+      requireLogin: true
+    }
+  },
+  {
+    path: '/dashboard/invoices/add',
+    name: 'AddInvoice',
+    component: AddInvoice,
     meta: {
       requireLogin: true
     }
