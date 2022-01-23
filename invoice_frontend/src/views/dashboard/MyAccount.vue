@@ -1,7 +1,14 @@
 <template>
   <div class="page-my-account">
-    <h1 class="title">My Account</h1>
 
+    <nav class="breadcrumb" aria-label="breadcrumbs">
+      <ul>
+        <li><router-link to="/dashboard">Dashboard</router-link></li>
+        <li class="is-active"><router-link to="/dashboard/my-account">My account</router-link></li>
+      </ul>
+    </nav>
+
+    <h1 class="title">My Account</h1>
     <strong>Team: </strong>{{ team.name }}<br>
     <strong>Username: </strong>{{ $store.state.user.username }}
 
